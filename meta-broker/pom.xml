@@ -11,5 +11,11 @@
 
     <artifactId>meta-broker</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>meta-remote</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
