@@ -13,30 +13,9 @@ import com.meta.mq.remote.protocol.RemoteResponse;
  */
 public class ClientManager {
 
-    private static MetaRemoteClient remoteClient;
+
 
     public static void main(String[] args) {
-        MetaRemoteClientConfig remoteClientConfig = new MetaRemoteClientConfig();
-        remoteClientConfig.setAddress("localhost:9999");
-        remoteClient = new MetaRemoteClient(remoteClientConfig);
-        remoteClient.prepare();
-        remoteClient.start();
-        while (true) {
-            RemoteRequest remoteRequest = new RemoteRequest();
-            remoteRequest.setCode(91);
-            remoteRequest.setBody("im client");
-            try {
-                RemoteResponse remoteResponse = remoteClient.invokeSync(remoteRequest);
-                System.out.println("recived server " + JSON.toJSONString(remoteResponse));
-            }catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                Thread.sleep(3000);
-            }catch (Exception e) {
-                //
-            }
 
-        }
     }
 }
