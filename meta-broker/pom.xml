@@ -16,6 +16,14 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>meta-remote</artifactId>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>meta-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>meta-store</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>

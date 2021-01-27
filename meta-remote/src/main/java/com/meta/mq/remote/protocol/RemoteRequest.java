@@ -18,6 +18,22 @@ public class RemoteRequest implements Serializable {
     public RemoteRequest() {
     }
 
+    public RemoteRequest(int code, int version, String body) {
+        this.code = code;
+        this.version = version;
+        this.body = body;
+    }
+
+    public RemoteRequest(Builder builder) {
+        this.code = builder.code;
+        this.version = builder.version;
+        this.body = builder.body;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public int getCode() {
         return code;
     }
@@ -40,5 +56,31 @@ public class RemoteRequest implements Serializable {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public static class Builder {
+        private int code;
+
+        private int version;
+
+        private String body;
+
+        public Builder() {
+        }
+        public Builder code (int code) {
+            this.code = code;
+            return this;
+        }
+        public Builder version(int version) {
+            this.version = version;
+            return this;
+        }
+        public Builder body(String body) {
+            this.body = body;
+            return this;
+        }
+        public RemoteRequest build() {
+            return new RemoteRequest(this);
+        }
     }
 }

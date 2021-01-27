@@ -11,5 +11,14 @@
 
     <artifactId>meta-client</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>meta-remote</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>meta-common</artifactId>
+        </dependency>
+    </dependencies>
 </project>

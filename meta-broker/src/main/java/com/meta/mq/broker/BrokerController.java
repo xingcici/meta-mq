@@ -1,8 +1,10 @@
 package com.meta.mq.broker;
 
-import com.meta.mq.broker.processor.BrokerProcessor;
+import com.meta.mq.broker.processor.MessagePullProcessor;
+import com.meta.mq.broker.processor.MessageSendProcessor;
 import com.meta.mq.remote.bolt.MetaRemoteServer;
 import com.meta.mq.remote.bolt.MetaRemoteServerConfig;
+import com.meta.mq.store.file.MemFileServiceImpl;
 
 /**
  * @author : haifeng.pang.
@@ -13,27 +15,23 @@ public class BrokerController {
 
     private MetaRemoteServer metaRemoteServer;
 
-
-    public Boolean init() {
+    public void init() {
         MetaRemoteServerConfig metaRemoteServerConfig = new MetaRemoteServerConfig();
-        metaRemoteServerConfig.addUserProcessor(new BrokerProcessor());
+        metaRemoteServerConfig.addUserProcessor(new MessageSendProcessor(new MemFileServiceImpl()));
+        metaRemoteServerConfig.addUserProcessor(new MessagePullProcessor(new MemFileServiceImpl()));
         metaRemoteServerConfig.setPort(9999);
         metaRemoteServer = new MetaRemoteServer(metaRemoteServerConfig);
-        return true;
     }
 
-    public Boolean prepare() {
+    public void prepare() {
         metaRemoteServer.prepare();
-        return true;
     }
 
-    public Boolean startup() {
-        metaRemoteServer.start();
-        return true;
+    public void startup() {
+        metaRemoteServer.startup();
     }
 
-    public Boolean shutdown() {
+    public void shutdown() {
         metaRemoteServer.shutdown();
-        return true;
     }
 }

@@ -45,13 +45,18 @@ public class MetaRemoteClient implements RemoteClient {
     }
 
     @Override
-    public void start() {
+    public void startup() {
         client.startup();
     }
 
     @Override
     public void shutdown() {
         client.shutdown();
+    }
+
+    @Override
+    public boolean isStarted() {
+        return false;
     }
 
     @Override

@@ -15,6 +15,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>meta-common</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
@@ -24,7 +28,7 @@
         </dependency>
         <dependency>
             <groupId>com.caucho</groupId>
-            <artifactId>hessian</artifactId>>
+            <artifactId>hessian</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

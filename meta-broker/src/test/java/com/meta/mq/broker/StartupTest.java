@@ -48,7 +48,7 @@ public class StartupTest {
         remoteClientConfig.setAddress("localhost:9999");
         remoteClient = new MetaRemoteClient(remoteClientConfig);
         remoteClient.prepare();
-        remoteClient.start();
+        remoteClient.startup();
         while (true) {
             RemoteRequest remoteRequest = new RemoteRequest();
             remoteRequest.setCode(91);

@@ -12,4 +12,10 @@
     <artifactId>meta-store</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>meta-common</artifactId>
+        </dependency>
+    </dependencies>
 </project>

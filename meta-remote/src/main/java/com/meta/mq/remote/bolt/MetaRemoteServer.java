@@ -20,7 +20,6 @@ public class MetaRemoteServer implements RemoteServer {
 
     private RpcServer server;
 
-
     private final MetaRemoteServerConfig metaRemoteServerConfig;
 
     public MetaRemoteServer(MetaRemoteServerConfig metaRemoteServerConfig) {
@@ -42,12 +41,17 @@ public class MetaRemoteServer implements RemoteServer {
     }
 
     @Override
-    public void start() {
+    public void startup() {
         server.startup();
     }
 
     @Override
     public void shutdown() {
         server.shutdown();
+    }
+
+    @Override
+    public boolean isStarted() {
+        return false;
     }
 }
