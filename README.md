@@ -54,4 +54,7 @@ public void consumer() {
 
 
 ```
+
+多副本同步利用 raft 保证，raft 用的是 sofa-jraft
+目前写入的数据能同步至 follower
  
