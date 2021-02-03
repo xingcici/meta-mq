@@ -10,6 +10,8 @@ import java.util.Map;
  */
 public class Message extends AbstractMessage {
 
+    private static final long serialVersionUID = 6801044478030268315L;
+
     private String topic;
 
     private long offset;

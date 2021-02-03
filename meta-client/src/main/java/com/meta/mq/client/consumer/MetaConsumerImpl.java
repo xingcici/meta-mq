@@ -34,7 +34,7 @@ public abstract class MetaConsumerImpl implements MetaConsumer {
         metaRemoteClient.startup();
         while (true) {
             try {
-                RemoteResponse remoteResponse = metaRemoteClient.invokeSync(new MessagePullRequest("test_topic"));
+                RemoteResponse remoteResponse = metaRemoteClient.invokeSync("localhost:8101", new MessagePullRequest("test_topic"));
                 if (RemoteSysResponseCode.SUCCESS == remoteResponse.getCode()) {
                     if (null == remoteResponse.getBody()) {
                         System.out.println("拉取消息为空 继续循环");

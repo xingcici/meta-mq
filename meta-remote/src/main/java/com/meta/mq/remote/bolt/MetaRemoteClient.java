@@ -2,6 +2,7 @@ package com.meta.mq.remote.bolt;
 
 import com.alipay.remoting.ConnectionEventProcessor;
 import com.alipay.remoting.ConnectionEventType;
+import com.alipay.remoting.InvokeCallback;
 import com.alipay.remoting.rpc.RpcClient;
 import com.alipay.remoting.rpc.protocol.UserProcessor;
 import com.meta.mq.remote.RemoteClient;
@@ -60,7 +61,12 @@ public class MetaRemoteClient implements RemoteClient {
     }
 
     @Override
-    public RemoteResponse invokeSync(RemoteRequest request) throws Exception{
+    public RemoteResponse invokeSync(String address, RemoteRequest request) throws Exception{
         return  (RemoteResponse) client.invokeSync(address, request, 1000);
+    }
+
+    @Override
+    public void invokeWithCallback(String address, RemoteRequest request, InvokeCallback invokeCallback, int timeout) throws Exception {
+        client.invokeWithCallback(address, request, invokeCallback, timeout);
     }
 }

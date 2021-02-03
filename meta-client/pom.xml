@@ -15,6 +15,12 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>meta-remote</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>hessian</artifactId>
+                    <groupId>com.alipay.sofa</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>

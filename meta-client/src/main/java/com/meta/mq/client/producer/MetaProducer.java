@@ -11,5 +11,5 @@ import com.meta.mq.remote.protocol.RemoteResponse;
  */
 public interface MetaProducer extends LifeCycle {
 
-    RemoteResponse send(Message message) throws Exception;
+    void send(Message message) throws Exception;
 }

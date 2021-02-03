@@ -1,4 +1,4 @@
-package com.meta.mq.store.file;
+package com.meta.mq.store;
 
 import com.meta.mq.common.message.Message;
 
@@ -7,7 +7,7 @@ import com.meta.mq.common.message.Message;
  * @version 0.1 : AbstractFile v0.1 2021/1/27 下午6:17 By haifeng.pang.
  * @description :
  */
-public interface FileService {
+public interface MessageStore {
 
     Message read(String topic, Long offset);
 

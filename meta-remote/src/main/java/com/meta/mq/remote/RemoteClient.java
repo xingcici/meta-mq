@@ -1,5 +1,6 @@
 package com.meta.mq.remote;
 
+import com.alipay.remoting.InvokeCallback;
 import com.meta.mq.common.life.LifeCycle;
 import com.meta.mq.remote.protocol.RemoteRequest;
 import com.meta.mq.remote.protocol.RemoteResponse;
@@ -11,5 +12,7 @@ import com.meta.mq.remote.protocol.RemoteResponse;
  */
 public interface RemoteClient extends LifeCycle {
 
-    public RemoteResponse invokeSync(RemoteRequest request) throws Exception;
+    RemoteResponse invokeSync(String address, RemoteRequest request) throws Exception;
+
+    void invokeWithCallback(String address, RemoteRequest request, InvokeCallback invokeCallback, int timeout) throws Exception;
 }

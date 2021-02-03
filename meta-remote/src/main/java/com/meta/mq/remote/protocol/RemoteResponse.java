@@ -15,6 +15,15 @@ public class RemoteResponse implements Serializable {
 
     private String body;
 
+    public RemoteResponse() {
+    }
+
+    public RemoteResponse(int code, int version, String body) {
+        this.code = code;
+        this.version = version;
+        this.body = body;
+    }
+
     public int getCode() {
         return code;
     }

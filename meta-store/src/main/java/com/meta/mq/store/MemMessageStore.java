@@ -1,4 +1,4 @@
-package com.meta.mq.store.file;
+package com.meta.mq.store;
 
 import com.meta.mq.common.exception.MetaBizException;
 import com.meta.mq.common.message.Message;
@@ -12,9 +12,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * @author : haifeng.pang.
  * @version 0.1 : MemFileService v0.1 2021/1/27 下午6:20 By haifeng.pang.
- * @description :
+ * @description : 内存消息存储
  */
-public class MemFileServiceImpl implements FileService {
+public class MemMessageStore implements MessageStore {
 
     private static final Map<String , BlockingQueue<Message>> MESSAGE_STORE = new HashMap<>();
 

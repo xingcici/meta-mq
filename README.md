@@ -10,6 +10,7 @@ meta-raft   共识协议
 meta-remote 网络
 meta-store  存储
 ```
+部分参考 Rocket MQ。
 
 目前是最简单版本的MQ，消息存放于内存中。不过最基础的功能都已经有了。rpc 用的是 sofa-bolt。
 

@@ -54,7 +54,7 @@ public class StartupTest {
             remoteRequest.setCode(91);
             remoteRequest.setBody("im client");
             try {
-                RemoteResponse remoteResponse = remoteClient.invokeSync(remoteRequest);
+                RemoteResponse remoteResponse = remoteClient.invokeSync("localhost:9999",remoteRequest);
                 System.out.println("recived server " + JSON.toJSONString(remoteResponse));
             }catch (Exception e) {
                 e.printStackTrace();
