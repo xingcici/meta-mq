@@ -42,7 +42,6 @@ public class BrokerStateMachine extends StateMachineAdapter {
     @Override
     public void onApply(Iterator iter) {
         while (iter.hasNext()) {
-
             MessageOperation operation = null;
 
             BrokerClosure closure = null;

@@ -41,6 +41,7 @@ public class MemMessageStore implements MessageStore {
             }else {
                 messages.offer(message);
             }
+            System.out.println(System.currentTimeMillis() + "-写入数据-id-" + message.getMessageId() + "-body-" + message.getBody());
         }catch (Exception e) {
             e.printStackTrace();
             throw new MetaBizException("写入异常");
