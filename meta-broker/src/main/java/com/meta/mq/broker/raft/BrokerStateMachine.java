@@ -50,17 +50,18 @@ public class BrokerStateMachine extends StateMachineAdapter {
 
             if (iter.done() != null) {
                 closure = (BrokerClosure) iter.done();
-            }else {
-                final ByteBuffer data = iter.getData();
-                try {
-                    operation = SerializerManager.getSerializer(SerializerManager.Hessian2).deserialize(data.array(), MessageOperation.class.getName());
-                }catch (CodecException e) {
-                    logger.error("Fail to decode IncrementAndGetRequest", e);
-                }
+
+            }
+
+            final ByteBuffer data = iter.getData();
+            try {
+                operation = SerializerManager.getSerializer(SerializerManager.Hessian2).deserialize(data.array(), MessageOperation.class.getName());
+            } catch (CodecException e) {
+                logger.error("Fail to decode IncrementAndGetRequest", e);
             }
 
             if (null != operation) {
-                switch (operation.getOp()){
+                switch (operation.getOp()) {
                     case MessageOperation.WRITE:
                         messageStoreService.write(JSON.parseObject(operation.getData(), Message.class));
                         break;
@@ -68,6 +69,8 @@ public class BrokerStateMachine extends StateMachineAdapter {
                         Message message = messageStoreService.read(operation.getData());
                         body = null == message ? "" : JSON.toJSONString(message);
                         break;
+                    default:
+                        throw new IllegalArgumentException("wrong operation name : " +  operation.getOp());
                 }
             }
 

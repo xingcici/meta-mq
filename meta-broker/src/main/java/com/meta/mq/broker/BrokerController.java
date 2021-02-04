@@ -1,6 +1,5 @@
 package com.meta.mq.broker;
 
-import com.alipay.sofa.jraft.JRaftUtils;
 import com.alipay.sofa.jraft.Node;
 import com.alipay.sofa.jraft.conf.Configuration;
 import com.meta.mq.broker.message.MessageService;
@@ -12,6 +11,7 @@ import com.meta.mq.broker.processor.MessageSendProcessor;
 import com.meta.mq.broker.raft.BrokerStateMachine;
 import com.meta.mq.broker.raft.RaftService;
 import com.meta.mq.broker.raft.RaftServiceImpl;
+import com.meta.mq.common.utils.ThreadUtil;
 import com.meta.mq.raft.RaftStartupService;
 import com.meta.mq.remote.bolt.MetaRemoteServer;
 import com.meta.mq.remote.bolt.MetaRemoteServerConfig;
@@ -69,6 +69,17 @@ public class BrokerController {
     public void startup() {
 
         metaRemoteServer.startup();
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    System.out.println("当前是否为leader : " + raftService.isLeader());
+                    ThreadUtil.quietSleep(3000);
+                }
+            }
+        });
+        thread.start();
     }
 
     public void shutdown() {
